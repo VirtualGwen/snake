@@ -3,8 +3,10 @@ import pygame
 pygame.init()
 
 white = (255,255,255)
+yellow = (255, 255, 102)
 black = (0,0,0)
 red = (255,0,0)
+green = (0, 255, 0)
 blue = (0,0,255)
 
 dis_width = 800
@@ -22,6 +24,10 @@ snake_block = 10
 
 font_style = pygame.font.SysFont("bahnschrift", 25)
 score_font = pygame.font.SysFont("conicsansms", 35)
+
+def your_score(score):
+	value = score_font.render("Your Score: " + str(score), True, yellow)
+	dis.blit(value, [0, 0])
 
 def our_snake(snake_block, snake_list):
 	for x in snake_list:
@@ -101,6 +107,7 @@ def gameLoop():
 				game_close = True
 		
 		our_snake(snake_block, snake_List)
+		your_score(Length_of_snake - 1)
 
 		pygame.display.update()
 
